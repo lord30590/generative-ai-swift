@@ -70,6 +70,8 @@ public class Chat {
     return sendMessageStream([ModelContent(parts: parts)])
   }
 
+    public  var continuationForStop: AsyncThrowingStream<GenerateContentResponse, Error>.Continuation? = nil
+
   /// Sends a message using the existing history of this chat as context. If successful, the message
   /// and response will be added to the history. If unsuccessful, history will remain unchanged.
   /// - Parameter content: The new content to send as a single chat message.
@@ -77,6 +79,7 @@ public class Chat {
   public func sendMessageStream(_ content: [ModelContent])
     -> AsyncThrowingStream<GenerateContentResponse, Error> {
     return AsyncThrowingStream { continuation in
+        continuationForStop = continuation
       Task {
         var aggregatedContent: [ModelContent] = []
 
