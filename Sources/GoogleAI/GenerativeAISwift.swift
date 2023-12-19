@@ -21,5 +21,6 @@ import Foundation
 public enum GenerativeAISwift {
   /// String value of the SDK version
   public static let version = "0.4.4"
-  static let baseURL = "https://generativelanguage.googleapis.com/v1"
+//  static let baseURL = "https://generativelanguage.googleapis.com/v1"
+    static let baseURL = "https://gemini.emoteai.club/v1"// proxy host
 }
