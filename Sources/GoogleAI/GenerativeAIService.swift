@@ -157,6 +157,7 @@ struct GenerativeAIService {
   private func urlRequest<T: GenerativeAIRequest>(request: T) throws -> URLRequest {
     var urlRequest = URLRequest(url: request.url)
     urlRequest.httpMethod = "POST"
+    urlRequest.timeoutInterval = 5
     urlRequest.setValue(apiKey, forHTTPHeaderField: "x-goog-api-key")
     urlRequest.setValue("genai-swift/\(GenerativeAISwift.version)",
                         forHTTPHeaderField: "x-goog-api-client")
